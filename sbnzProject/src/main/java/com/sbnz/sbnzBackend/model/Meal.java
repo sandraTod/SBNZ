@@ -3,7 +3,10 @@ package com.sbnz.sbnzBackend.model;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Recipe {
+import javax.persistence.Entity;
+
+
+public class Meal {
 	
 	private Long id;
 	private String name;
@@ -11,7 +14,7 @@ public class Recipe {
 	private Meat meat;
 	private Collection <Ingredient> ingredients = new ArrayList<>();
 	
-	Recipe(){}
+	Meal(){}
 
 	public Long getId() {
 		return id;
@@ -52,6 +55,14 @@ public class Recipe {
 	public void setIngredients(Collection<Ingredient> ingredients) {
 		this.ingredients = ingredients;
 	}
+
+	@Override
+	public String toString() {
+		return "Meal [id=" + id + ", name=" + name + ", sauce=" + sauce + ", meat=" + meat + ", ingredients="
+				+ ingredients + "]";
+	}
+	
+	
 	
 	
 	

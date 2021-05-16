@@ -1,11 +1,27 @@
 package com.sbnz.sbnzBackend.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+@Entity
 public class Meat {
 	
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(nullable = false)
 	private String name;
+	
+	@Enumerated(EnumType.STRING)
 	private MeatType meatType;
-	private boolean deleted;
+	
+	//private boolean deleted;
 	
 	Meat(){}
 
@@ -33,13 +49,12 @@ public class Meat {
 		this.meatType = meatType;
 	}
 
-	public boolean isDeleted() {
-		return deleted;
+	@Override
+	public String toString() {
+		return "Meat [id=" + id + ", name=" + name + ", meatType=" + meatType + "]";
 	}
 
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
-	}
+	
 	
 	
 	

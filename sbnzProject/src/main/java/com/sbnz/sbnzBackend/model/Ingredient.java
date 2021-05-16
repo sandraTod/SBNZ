@@ -1,10 +1,21 @@
 package com.sbnz.sbnzBackend.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Ingredient {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(nullable = false)
 	private String name;
-	private boolean deleted=false;
+	//private boolean deleted=false;
 	
 	public Ingredient() {
 	}
@@ -25,13 +36,14 @@ public class Ingredient {
 		this.name = name;
 	}
 
-	public boolean isDeleted() {
-		return deleted;
+	@Override
+	public String toString() {
+		return "Ingredient [id=" + id + ", name=" + name + "]";
 	}
 
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
-	}
+	
+	
+	
 	
 	
 

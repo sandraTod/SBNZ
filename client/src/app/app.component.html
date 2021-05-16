@@ -1,0 +1,48 @@
+<div class="container" *ngIf="isLoggedIn()">
+  <nav class="navbar  navbar-expand-sm navbar-light" style="background-color: #e3f2fd;">
+
+      <!-- Links -->
+      <ul class="navbar-nav" *ngIf="getRole()=='ADMIN'">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="users">Korisnici</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="wines">Vina</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="meats">Meso</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="sauces">Sosevi</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="ingredients">Zacini</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="profile">Moj profil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="logout()">Odjavi me</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav" *ngIf="getRole()=='KORISNIK'">
+        <li class="nav-item">
+          <a class="nav-link" (click)="logout()">Odjavi me</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="patients">Pacijenti</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="reports">Izvjestaji</a>
+        </li>
+      </ul>
+    
+    </nav>
+
+    <router-outlet></router-outlet>
+</div>
+<div class="container" *ngIf="!isLoggedIn()">
+  <app-login></app-login>
+</div>
+

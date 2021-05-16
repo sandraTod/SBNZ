@@ -1,0 +1,26 @@
+import com.sbnz.sbnzBackend.model.*;
+import java.util.*;
+
+
+
+//declare any global variables here
+
+
+
+
+rule "Your First Rule"
+
+    when
+    
+    then
+
+end
+
+rule "Your Second Rule"
+    //include attributes such as "salience" here...
+    when
+        //conditions
+    then
+        //actions
+
+end

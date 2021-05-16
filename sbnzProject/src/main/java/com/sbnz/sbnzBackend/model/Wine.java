@@ -2,19 +2,48 @@ package com.sbnz.sbnzBackend.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+@Entity
 public class Wine {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(nullable=false)
 	private String name;
+	
+	@Column(nullable=false)
 	private int year;
+	
+	@Enumerated(EnumType.STRING)
 	private WineColor color;
+	
+	@Enumerated(EnumType.STRING)
 	private WineSugar wineSugar;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
 	private Collection<Sauce> sauceList =new ArrayList<>();
-	private Collection<Meat> meatList =new ArrayList<>();
-	private Collection<Ingredient> ingrdients=new ArrayList<>();
-	private Recipe perfectRecipe;
-	private boolean deleted= false;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	private Set<Meat> meatList =new HashSet<>();
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	private Set<Ingredient> ingredients=new HashSet<>();
+	
+	//private Meal perfectMeal;
+	//private boolean deleted= false;
 	
 	Wine(){}
 
@@ -66,36 +95,30 @@ public class Wine {
 		this.sauceList = sauceList;
 	}
 
-	public Collection<Meat> getMeatList() {
+	public Set<Meat> getMeatList() {
 		return meatList;
 	}
 
-	public void setMeatList(Collection<Meat> meatList) {
+	public void setMeatList(Set<Meat> meatList) {
 		this.meatList = meatList;
 	}
 
-	public Collection<Ingredient> getIngrdiants() {
-		return ingrdients;
+	public Set<Ingredient> getIngredients() {
+		return ingredients;
 	}
 
-	public void setIngrdiants(ArrayList<Ingredient> ingrdiants) {
-		this.ingrdients = ingrdiants;
+	public void setIngrdients(Set<Ingredient> ingredients) {
+		this.ingredients = ingredients;
 	}
+
 	
-	public Collection<Ingredient> getIngrdients() {
-		return ingrdients;
+
+	/*public Meal getPerfectMeal() {
+		return perfectMeal;
 	}
 
-	public void setIngrdients(Collection<Ingredient> ingrdients) {
-		this.ingrdients = ingrdients;
-	}
-
-	public Recipe getPerfectRecipe() {
-		return perfectRecipe;
-	}
-
-	public void setPerfectRecipe(Recipe perfectRecipe) {
-		this.perfectRecipe = perfectRecipe;
+	public void setPerfectMeal(Meal perfectMeal) {
+		this.perfectMeal = perfectMeal;
 	}
 
 	public boolean isDeleted() {
@@ -104,7 +127,7 @@ public class Wine {
 
 	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
-	}
+	}*/
 	
 	
 	

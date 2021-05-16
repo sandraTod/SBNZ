@@ -1,14 +1,37 @@
 package com.sbnz.sbnzBackend.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
 public class User {
 	
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(nullable=false)
+	private String username;
+	
+	@Column(nullable=false)
 	private String password;
+	
+	@Column(nullable=false)
 	private String name;
+	
+	@Column(nullable=false)
 	private String lastname;
+	
+	@Enumerated(EnumType.STRING)
 	private UserRole role;
-	private boolean deleted;
+	
+	//private boolean delete=false;
 	
 	
 	User(){}
@@ -21,6 +44,15 @@ public class User {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 
@@ -64,14 +96,26 @@ public class User {
 	}
 
 
-	public boolean isDeleted() {
-		return deleted;
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", name=" + name + ", lastname="
+				+ lastname + ", role=" + role + "]";
+	}
+	
+	
+
+
+	/*public boolean isDelete() {
+		return delete;
 	}
 
 
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
-	}
+	public void setDelete(boolean delete) {
+		this.delete = delete;
+	}*/
+
+
+	
 	
 	
 	
